@@ -1,0 +1,136 @@
+
+<?php $__env->startSection('content'); ?>
+<div class="page-header d-print-none">
+    <div class="container-xl">
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <!-- Page pre-title -->
+          <h2 class="page-title">
+            Konfigurasi Lokasi
+          </h2>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <?php if(Session::get('success')): ?>
+                        <div class="alert alert-success">
+                            <?php echo e(Session::get('success')); ?>
+
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if(Session::get('warning')): ?>
+                        <div class="alert alert-warning">
+                            <?php echo e(Session::get('warning')); ?>
+
+                        </div>
+                        <?php endif; ?>
+                        <form action="/konfigurasi/updatelokasikantor" id="frmKonfigurasi" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                          <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  
+                                        fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  
+                                        stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-map">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M3 7l6 -3l6 3l6 -3v13l-6 3l-6 -3l-6 3v-13" />
+                                            <path d="M9 4v13" />
+                                            <path d="M15 7v13" />
+                                        </svg>
+                                        </span>
+                                        <input type="text" value="<?php echo e($lok_kantor->lokasi_kantor); ?>" id="lokasi_kantor" class="form-control" placeholder="Lokasi Kantor" 
+                                        name="lokasi_kantor">
+                                      </div>
+                                      <div style="margin-bottom: 10px">
+                                        <small class="form-text text-muted">
+                                            Koordinat Latitude dan Longitude hanya menggunakan tanda koma, tidak ada spasi.
+                                        </small>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                          <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  
+                                        fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  
+                                        stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-radar-2">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                            <path d="M15.51 15.56a5 5 0 1 0 -3.51 1.44" />
+                                            <path d="M18.832 17.86a9 9 0 1 0 -6.832 3.14" />
+                                            <path d="M12 12v9" />
+                                        </svg>
+                                        </span>
+                                        <input type="text" value="<?php echo e($lok_kantor->radius); ?>" id="radius" class="form-control" placeholder="Radius" 
+                                        name="radius">
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100">
+                                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  
+                                        fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  
+                                        stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-refresh">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
+                                            <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
+                                        </svg>
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('myscript'); ?>
+<script>
+    $ (function() {
+        $("#frmKonfigurasi").submit(function(e) {
+            var lokasi_kantor = $("#lokasi_kantor").val();
+            var radius = $("#radius").val();
+            
+            if (lokasi_kantor == "") {
+                Swal.fire({
+                    title: 'Warning !',
+                    text: 'Lokasi Kantor harus di isi',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    $("#lokasi_kantor").focus();
+                });
+                return false;
+            } else if (radius == "") {
+                Swal.fire({
+                    title: 'Warning !',
+                    text: 'Radius harus di isi',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    $("#radius").focus();
+                });
+                return false;
+            }
+        });
+    });
+</script>
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.admin.tabler', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Proyek Penelitian\presensigps\resources\views/konfigurasi/lokasikantor.blade.php ENDPATH**/ ?>

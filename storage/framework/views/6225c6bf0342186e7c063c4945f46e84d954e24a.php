@@ -1,0 +1,1 @@
+<img src="data:image/png;base64, <?php echo e($izinsakit->doc_skd); ?>"><?php /**PATH D:\Proyek Penelitian\presensigps\resources\views/presensi/izinsakitshow.blade.php ENDPATH**/ ?>

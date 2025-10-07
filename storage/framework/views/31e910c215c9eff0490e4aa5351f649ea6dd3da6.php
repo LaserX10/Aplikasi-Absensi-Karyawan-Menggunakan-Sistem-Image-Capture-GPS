@@ -1,0 +1,286 @@
+
+<?php $__env->startSection('content'); ?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-12">
+            <?php if(Session::get('success')): ?>
+            <div class="alert alert-success">
+                <?php echo e(Session::get('success')); ?>
+
+            </div>
+            <?php endif; ?>
+
+            <?php if(Session::get('warning')): ?>
+            <div class="alert alert-warning">
+                <?php echo e(Session::get('warning')); ?>
+
+            </div>
+            <?php endif; ?>
+            </div>
+        </div>
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <!-- Page pre-title -->
+          <h2 class="page-title">
+            Data Izin / Sakit / Cuti
+          </h2>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-12">
+                <form action="/yayasanizinsakit" method="GET" autocomplete="off">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-icon mb-3">
+                                <span class="input-icon-addon">
+                                  <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  
+                                    fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  
+                                    stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-event">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                        <path d="M16 3l0 4" />
+                                        <path d="M8 3l0 4" />
+                                        <path d="M4 11l16 0" />
+                                        <path d="M8 15h2v2h-2z" />
+                                    </svg>
+                                </span>
+                                <input type="text" value="<?php echo e(Request('dari')); ?>" id="dari" class="form-control" placeholder="Dari" name="dari">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-icon mb-3">
+                                <span class="input-icon-addon">
+                                  <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  
+                                    fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  
+                                    stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-event">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                        <path d="M16 3l0 4" />
+                                        <path d="M8 3l0 4" />
+                                        <path d="M4 11l16 0" />
+                                        <path d="M8 15h2v2h-2z" />
+                                    </svg>
+                                </span>
+                                <input type="text" value="<?php echo e(Request('sampai')); ?>" id="sampai" class="form-control" placeholder="Sampai" name="sampai">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="input-icon mb-3">
+                                <span class="input-icon-addon">
+                                  <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  
+                                    fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  
+                                    stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-barcode">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M4 7v-1a2 2 0 0 1 2 -2h2" />
+                                        <path d="M4 17v1a2 2 0 0 0 2 2h2" />
+                                        <path d="M16 4h2a2 2 0 0 1 2 2v1" />
+                                        <path d="M16 20h2a2 2 0 0 0 2 -2v-1" />
+                                        <path d="M5 11h1v2h-1z" />
+                                        <path d="M10 11l0 2" />
+                                        <path d="M14 11h1v2h-1z" />
+                                        <path d="M19 11l0 2" />
+                                    </svg>
+                                </span>
+                                <input type="text" value="<?php echo e(Request('nik')); ?>" id="nik" class="form-control" placeholder="NIK" 
+                                name="nik">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-icon mb-3">
+                                <span class="input-icon-addon">
+                                  <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  
+                                    fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  
+                                    stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-users">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                        <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                                    </svg>
+                                </span>
+                                <input type="text" value="<?php echo e(Request('nama_lengkap')); ?>" id="nama_lengkap" class="form-control" 
+                                placeholder="Nama Karyawan" 
+                                name="nama_lengkap">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <select name="status_approved" id="status_approved" class="form-select">
+                                    <option value="">Pilih Status</option>
+                                    <option value="0" <?php echo e(Request('status_approved') === '0' ? 'selected' : ''); ?>>Pending</option>
+                                    <option value="1" <?php echo e(Request('status_approved') == 1 ? 'selected' : ''); ?>>Disetujui</option>
+                                    <option value="2" <?php echo e(Request('status_approved') == 2 ? 'selected' : ''); ?>>Ditolak</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">
+                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  
+                                    fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  
+                                    stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-search">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                                        <path d="M21 21l-6 -6" />
+                                    </svg>
+                                    Cari Data
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Izin</th>
+                            <th>Tanggal</th>
+                            <th>NIK</th>
+                            <th>Nama Karyawan</th>
+                            <th>Jabatan</th>
+                            <th>Status</th>
+                            <th>
+                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  
+                                stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-paperclip">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5"/>
+                                </svg>
+                            </th>
+                            <th>Keterangan</th>
+                            <th>Status Persetujuan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $__currentLoopData = $izinsakit; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <td><?php echo e($loop->iteration); ?></td>
+                                <td><?php echo e($d->kode_izin); ?></td>
+                                <td>
+                                    <?php echo e(date('d-m-Y', strtotime($d->tgl_izin_dari))); ?> s/d 
+                                    <?php echo e(date('d-m-Y', strtotime($d->tgl_izin_sampai))); ?>
+
+                                </td>
+                                <td><?php echo e($d->nik); ?></td>
+                                <td><?php echo e($d->nama_lengkap); ?></td>
+                                <td><?php echo e($d->jabatan); ?></td>
+                                <td>
+                                    <?php echo e($d->status == 'i' ? 'Izin' : ($d->status == 's' ? 'Sakit' : ($d->status == 'c' ? 'Cuti' : '-'))); ?>
+
+                                </td>
+                                <td>
+                                    <?php if(!empty($d->doc_skd)): ?>
+                                        
+                                        <a href="/presensi/izinsakitshow?kodeizin=<?php echo e($d->kode_izin); ?>" target="_blank">   
+                                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  
+                                            fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  
+                                            stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-paperclip">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" />
+                                            </svg>
+                                        </a>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?php echo e($d->keterangan); ?></td>
+                                <td>
+                                    <?php if($d->status_approved == 1): ?>
+                                    <span class="badge bg-success" style="color: white">Disetujui</span>
+                                    <?php elseif($d->status_approved == 2): ?>
+                                    <span class="badge bg-danger" style="color: white">Ditolak</span>
+                                    <?php else: ?>
+                                    <span class="badge bg-warning" style="color: white">Pending</span>
+                                    <?php endif; ?>
+                                </td>
+                                
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </tbody>
+                </table>
+                <?php echo e($izinsakit->links('vendor.pagination.bootstrap-5')); ?>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-blur fade" id="modal-izinsakit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Izin / Sakit / Cuti</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/presensi/approveizinsakit" method="POST">
+            <?php echo csrf_field(); ?>
+            <input type="hidden" id="kode_izin_form" name="kode_izin_form">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <select name="status_approved" id="status_approved" class="form-select">
+                            <option value="1">Disetujui</option>
+                            <option value="2">Ditolak</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-12">
+                    <div class="form-group">
+                        <button class="btn btn-primary w-100" type="submit">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  
+                            stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-send">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M10 14l11 -11" />
+                                <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
+                            </svg>
+                            Simpan
+                        </button>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('myscript'); ?>
+<script>
+    $(function() {
+        $(".approve").click(function(e) {
+            e.preventDefault();
+            var kode_izin = $(this).attr("kode_izin")
+            $("#kode_izin_form").val(kode_izin);
+            $("#modal-izinsakit").modal("show");
+        });
+
+        $("#dari, #sampai").datepicker({ 
+            autoclose: true, 
+            todayHighlight: true,
+            format:'yyyy-mm-dd'
+        });
+    });
+
+</script>
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.admin.tabler', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Proyek Penelitian\presensigps\resources\views/presensi/yayasanizinsakit.blade.php ENDPATH**/ ?>
